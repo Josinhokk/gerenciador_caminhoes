@@ -1,9 +1,9 @@
 package br.com.kayke.gerenciador_caminhoes.model;
 
 public enum Modelo {
-    CARRETA("Carreta"),
-    TRUCK("Truck"),
-    SIDER("Sider");
+    CARRETA("carreta"),
+    TRUCK("truck"),
+    SIDER("sider");
 
     private String modelo;
 
@@ -11,7 +11,7 @@ public enum Modelo {
         this.modelo = modelo;
     }
 
-    public static Modelo fromPortugues(String text){
+    public static Modelo caminhao(String text){
         for(Modelo modeloRetornado : Modelo.values()){
             if(modeloRetornado.modelo.equalsIgnoreCase(text)){
                 return modeloRetornado;
