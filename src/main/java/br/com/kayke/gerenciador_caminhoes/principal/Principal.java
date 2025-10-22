@@ -18,7 +18,7 @@ public class Principal {
     @Autowired
     CaminhaoRepository caminhaoRepository;
 
-    public void exibeMenu(){
+    public void exibeMenu() {
 
         var menu = """
                 ================================
@@ -32,7 +32,7 @@ public class Principal {
                 0. Sair
                 """;
 
-        var opc =  -1;
+        var opc = -1;
 
         while (opc != 0) {
             System.out.println(menu);
@@ -42,8 +42,21 @@ public class Principal {
                 case 1:
                     cadastraCaminhao();
                     break;
+                case 2:
+                    cadastraMotorista();
+                    break;
+                case 3:
+                    cadastraOperador();
+                    break;
+                case 4:
+                    cadastrarBases();
+                    break;
+                default:
+                    System.out.println("Opção inválida ou ainda não implementada.");
+                    break;
+
             }
-            
+
         }
 
 
@@ -59,6 +72,18 @@ public class Principal {
         System.out.println("Modelo selecionado: " + modeloProcurado);
         Caminhao caminhao = new Caminhao(placa, modeloProcurado);
         caminhaoRepository.save(caminhao);
+
+    }
+
+    public void cadastraMotorista() {
+        
+    }
+
+    public void cadastraOperador() {
+
+    }
+
+    public void cadastraBases() {
 
     }
 
