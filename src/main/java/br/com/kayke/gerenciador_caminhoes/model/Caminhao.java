@@ -83,4 +83,7 @@ public class Caminhao {
         this.modelo = modelo;
     }
 
+    public Long getId() {
+        return id;
+    }
 }
