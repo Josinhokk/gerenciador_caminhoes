@@ -15,4 +15,9 @@ public class Operador {
     @OneToMany(mappedBy = "operador", cascade = CascadeType.ALL)
     private List<Base> bases;
 
+    public Operador(String nome) {
+        this.nome = nome;
+    }
+    public Operador() {
+    }
 }

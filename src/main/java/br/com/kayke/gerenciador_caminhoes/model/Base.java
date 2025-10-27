@@ -22,5 +22,37 @@ public class Base {
     @OneToMany(mappedBy = "base", cascade = CascadeType.ALL)
     private List<Caminhao> caminhoes;
 
+    public Long getId() {
+        return id;
+    }
 
+    public int getNumBase() {
+        return numBase;
+    }
+
+    public Operador getOperador() {
+        return operador;
+    }
+
+    public List<Caminhao> getCaminhoes() {
+        return caminhoes;
+    }
+
+    public void setNumBase(int numBase) {
+        this.numBase = numBase;
+    }
+
+    public void setOperador(Operador operador) {
+        this.operador = operador;
+    }
+
+    public void setCaminhoes(List<Caminhao> caminhoes) {
+        this.caminhoes = caminhoes;
+    }
+
+    public Base(int numBase) {
+        this.numBase = numBase;
+    }
+    public Base() {
+    }
 }
