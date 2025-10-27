@@ -147,6 +147,34 @@ public class Principal {
                             0. Voltar
                             ================================
                             """);
+                    var opcBase = entrada.nextInt();
+                    entrada.nextLine();
+                    switch (opcBase) {
+                        case 1:
+                            System.out.println("Aqui estão os operadores disponíveis: ");
+                            List<Operador> operadores = operadorRepository.findAll();
+                            operadores.forEach(operador -> {
+                                System.out.println("Nome: " + operador.getNome() + ", ID: " + operador.getId());
+                            });
+                            System.out.println("Digite o ID do operador que deseja atribuir à base: ");
+                            Long operadorId = entrada.nextLong();
+                            entrada.nextLine();
+                            Optional<Operador> operadorSelecionado = operadorRepository.findById(operadorId);
+                            if (operadorSelecionado.isPresent()) {
+                                baseSelecionada.get().setOperador(operadorSelecionado.get());
+                                baseRepository.save(baseSelecionada.get());
+                                System.out.println("Operador atribuído à base com sucesso!");
+                            } else {
+                                System.out.println("Operador não encontrado.");
+                            }
+                            break;
+                        case 2:
+                            System.out.println("Ainda não implementado.");
+                            break;
+                            default:
+                                System.out.println("Opção inválida!");
+                                break;
+                    }
                 }
                 break;
             case 2:

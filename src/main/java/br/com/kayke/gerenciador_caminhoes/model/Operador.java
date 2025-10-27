@@ -15,6 +15,18 @@ public class Operador {
     @OneToMany(mappedBy = "operador", cascade = CascadeType.ALL)
     private List<Base> bases;
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public List<Base> getBases() {
+        return bases;
+    }
+
     public Operador(String nome) {
         this.nome = nome;
     }
