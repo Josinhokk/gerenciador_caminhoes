@@ -169,7 +169,23 @@ public class Principal {
                             }
                             break;
                         case 2:
-                            System.out.println("Ainda não implementado.");
+                            System.out.println("Aqui estão os caminhões disponiveis: ");
+
+                            List<Caminhao> caminhoes = caminhaoRepository.findByBaseIsNull();
+                            caminhoes.forEach(caminhao -> {
+                                System.out.println("Caminhão ID: " + caminhao.getId() + ", Placa: " + caminhao.getPlaca());
+                            });
+                            System.out.println("Digite o ID do caminhão que deseja atribuir à base: ");
+                            Long caminhaoId = entrada.nextLong();
+                            entrada.nextLine();
+                            Optional<Caminhao> caminhaoSelecionado = caminhaoRepository.findById(caminhaoId);
+                            if (caminhaoSelecionado.isPresent()) {
+                                caminhaoSelecionado.get().setBase(baseSelecionada.get());
+                                caminhaoRepository.save(caminhaoSelecionado.get());
+                                System.out.println("Caminhão atribuído à base com sucesso!");
+                            } else {
+                                System.out.println("Caminhão não encontrado.");
+                            }
                             break;
                             default:
                                 System.out.println("Opção inválida!");
