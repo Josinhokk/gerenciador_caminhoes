@@ -12,4 +12,6 @@ public interface CaminhaoRepository extends JpaRepository<Caminhao, Long> {
     List<Caminhao> findByMotoristaIsNull();
 
     List<Caminhao> findByBaseIsNull();
+
+    List<Caminhao> findByFrotaIsNull();
 }

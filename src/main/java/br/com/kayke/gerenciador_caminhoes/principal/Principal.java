@@ -42,6 +42,7 @@ public class Principal {
                 Outras operações:
                 
                 5. Definir Motorista para Caminhão
+                6. Definir Frota
                 
                 0. Sair
                 
@@ -70,6 +71,9 @@ public class Principal {
                 case 5:
                     definirMotorista();
                     break;
+                case 6:
+                    definirFrota();
+                    break;
                 default:
                     System.out.println("Opção inválida ou ainda não implementada.");
                     break;
@@ -80,6 +84,7 @@ public class Principal {
 
 
     }
+
 
 
     private void cadastraCaminhao() {
@@ -230,6 +235,25 @@ public class Principal {
         } else {
             System.out.println("Caminhão não encontrado.");
         }
+    }
+
+    private void definirFrota() {
+        List<Caminhao> caminhoes = caminhaoRepository.findByFrotaIsNull();
+        caminhoes.forEach(caminhao -> {
+            System.out.println("Caminhão ID: " + caminhao.getId() + ", Placa: " + caminhao.getPlaca());
+        });
+        System.out.println("Digite o ID do caminhão que deseja atribuir uma frota:");
+        var caminhaoId = entrada.nextLong();
+        entrada.nextLine();
+        Optional<Caminhao> caminhaoSelecionado = caminhaoRepository.findById(caminhaoId);
+        if (caminhaoSelecionado.isPresent()) {
+            System.out.println("Digite a frota que deseja atribuir");
+            var frota = entrada.nextLine();
+            caminhaoSelecionado.get().setFrota(frota);
+            System.out.println("Frota Atribuida com sucesso: " + frota);
+            caminhaoRepository.save(caminhaoSelecionado.get());
+
+    }
     }
 
     private void cadastraBase(){
