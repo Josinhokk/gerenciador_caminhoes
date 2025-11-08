@@ -1,6 +1,7 @@
 package br.com.kayke.gerenciador_caminhoes.controller;
 
 import br.com.kayke.gerenciador_caminhoes.dto.CaminhaoDTO;
+import br.com.kayke.gerenciador_caminhoes.repository.OperadorRepository;
 import br.com.kayke.gerenciador_caminhoes.service.CaminhaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +15,12 @@ public class CaminhaoController {
     @Autowired
     private CaminhaoService servico;
 
+    @Autowired
+    private OperadorRepository operadorRepository;
+
     @GetMapping("/caminhao")
     public List<CaminhaoDTO> obterTodosCaminhoes() {return servico.obterTodosCaminhoes();}
+
 
 
 }
