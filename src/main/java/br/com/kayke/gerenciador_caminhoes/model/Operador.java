@@ -27,6 +27,10 @@ public class Operador {
         return bases;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public Operador(String nome) {
         this.nome = nome;
     }

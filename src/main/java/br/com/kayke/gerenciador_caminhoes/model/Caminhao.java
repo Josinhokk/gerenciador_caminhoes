@@ -16,6 +16,7 @@ public class Caminhao {
     private String placa;
     @Column()
     private String numCarga;
+
     @Column(nullable = false)
     private Enum modelo;
 

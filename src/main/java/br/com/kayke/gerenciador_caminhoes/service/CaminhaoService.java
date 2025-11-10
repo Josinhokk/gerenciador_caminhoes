@@ -4,10 +4,7 @@ import br.com.kayke.gerenciador_caminhoes.dto.CaminhaoDTO;
 import br.com.kayke.gerenciador_caminhoes.model.Caminhao;
 import br.com.kayke.gerenciador_caminhoes.repository.CaminhaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +24,7 @@ public class CaminhaoService {
 
     public Caminhao cadastraCaminhao(CaminhaoDTO dto) {
 
+
         // Esta lógica de conversão está ótima
         String frotaRecebida = dto.frota();
         String placaRecebida = dto.placa();
@@ -37,10 +35,12 @@ public class CaminhaoService {
         caminhaoRecebido.setPlaca(placaRecebida);
         caminhaoRecebido.setNumCarga(numCargaRecebida);
 
+
+
         // 2. Salve no banco
-        Caminhao caminhaoSalvo = caminhaoRepositorio.save(caminhaoRecebido);
+        caminhaoRepositorio.save(caminhaoRecebido);
 
         // 3. Retorne o objeto PURO que você salvou
-        return caminhaoSalvo;
+        return caminhaoRecebido;
     }
 }
