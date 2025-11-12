@@ -25,7 +25,7 @@ public class CaminhaoController {
     @PostMapping("/cadastro")
     public ResponseEntity<Caminhao> cadastraCaminhao(@RequestBody CaminhaoDTO dto) {
     Caminhao novoCaminhao = servico.cadastraCaminhao(dto);
-    return ResponseEntity.status(HttpStatus.CREATED).body(novoCaminhao);
+    return ResponseEntity.ok(novoCaminhao);
     }
 
 }

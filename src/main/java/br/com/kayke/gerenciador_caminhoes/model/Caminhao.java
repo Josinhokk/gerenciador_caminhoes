@@ -21,7 +21,7 @@ public class Caminhao {
     private Enum modelo;
 
     @ManyToOne
-    @JoinColumn(name = "base_id")
+    @JoinColumn(name = "base_id") 
     private Base base;
 
     @OneToOne

@@ -2,6 +2,7 @@ package br.com.kayke.gerenciador_caminhoes.service;
 
 import br.com.kayke.gerenciador_caminhoes.dto.CaminhaoDTO;
 import br.com.kayke.gerenciador_caminhoes.model.Caminhao;
+import br.com.kayke.gerenciador_caminhoes.model.Modelo;
 import br.com.kayke.gerenciador_caminhoes.repository.CaminhaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,12 @@ public class CaminhaoService {
     @Autowired
     CaminhaoRepository caminhaoRepositorio;
 
+    Modelo modelo;
 
     public List<CaminhaoDTO> obterTodosCaminhoes(){
         return caminhaoRepositorio.findAll()
                 .stream()
-                .map(c -> new CaminhaoDTO(c.getFrota(),c.getPlaca(),c.getNumCarga()))
+                .map(c -> new CaminhaoDTO(c.getFrota(),c.getPlaca(),c.getNumCarga(),c.getModelo().name()))
                 .collect(Collectors.toList());
     }
 
@@ -30,11 +32,13 @@ public class CaminhaoService {
         String placaRecebida = dto.placa();
         String numCargaRecebida = dto.numCarga();
 
+        Modelo modeloCaminhao = modelo.caminhao(dto.modelo());
+
         Caminhao caminhaoRecebido = new Caminhao();
         caminhaoRecebido.setFrota(frotaRecebida);
         caminhaoRecebido.setPlaca(placaRecebida);
         caminhaoRecebido.setNumCarga(numCargaRecebida);
-
+        caminhaoRecebido.setModelo(modeloCaminhao);
 
 
         // 2. Salve no banco
